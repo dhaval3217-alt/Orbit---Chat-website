@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --sat: env(safe-area-inset-top, 0px);
+    --sab: env(safe-area-inset-bottom, 0px);
+    --sal: env(safe-area-inset-left, 0px);
+    --sar: env(safe-area-inset-right, 0px);
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  body {
+    @apply bg-[#0a0d14] text-slate-100 font-sans min-h-screen antialiased;
+    background-image: radial-gradient(circle at top, rgba(59, 130, 246, 0.18), transparent 35%), radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.12), transparent 25%);
+    padding-top: var(--sat);
+    padding-left: var(--sal);
+    padding-right: var(--sar);
+  }
+
+  .three-d-card {
+    transform: perspective(1200px) rotateX(0deg);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .three-d-card:hover {
+    transform: perspective(1200px) translateY(-2px) rotateX(2deg);
+    box-shadow: 0 28px 60px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Mobile Safe-Area Utilities */
+.pb-safe {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+}
+
+.pt-safe {
+  padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+}
+
+.bottom-safe {
+  bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.top-safe {
+  top: env(safe-area-inset-top, 0px);
+}
+
+/* App-like Touch Target & Feedback */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.active-scale {
+  @apply transition-transform active:scale-95 duration-100;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Glass & Glow utilities */
+.glass-panel {
+  background: rgba(18, 24, 36, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-nav {
+  background: rgba(10, 13, 20, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glow-indigo {
+  box-shadow: 0 0 35px -5px rgba(99, 102, 241, 0.25);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 35px -5px rgba(6, 182, 212, 0.25);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.25);
+}
+
+/* Soundwave Speaking Animation */
+@keyframes soundwave {
+  0%, 100% {
+    height: 6px;
+  }
+  50% {
+    height: 22px;
+  }
+}
+
+.animate-soundwave-1 {
+  animation: soundwave 1s ease-in-out infinite;
+}
+.animate-soundwave-2 {
+  animation: soundwave 1s ease-in-out infinite 0.2s;
+}
+.animate-soundwave-3 {
+  animation: soundwave 1s ease-in-out infinite 0.4s;
+}
+.animate-soundwave-4 {
+  animation: soundwave 1s ease-in-out infinite 0.6s;
+}
+
